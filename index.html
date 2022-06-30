@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: helvetica;
+            color: #1F1D36;
+            background: linear-gradient(to top, #660066 1%, #ff9999 98%);
+        }
+
+        .tombol {
+            width: 250px;
+            height: 400px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .ok {
+            width: 100px;
+            height: 100px;
+            background-color: #1F1D36;
+            border: none;
+            border-radius: 5px;
+            color: rgb(219, 242, 248);
+            font-size: 2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .ok:active {
+            transform: scale(.9);
+        }
+
+        .tidak {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(235, 146, 146);
+            border: none;
+            border-radius: 5px;
+            color: #1F1D36;
+            font-size: 2em;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="1.jpg" alt="logo" class="img" style="height:200px">
+    <section id="text">
+        <h1>Logo Diatas</h1>
+        <h2 id="ganti">Tolong Direvisi</h2>
+    </section>
+    <div class="tombol">
+        <button class="ok">OK Bos</button>
+        <button class="tidak">Tidak Mau</button>
+    </div>
+
+    <script>
+        const jumlahGambar = 3;
+        let hitung = 0;
+
+        // buat elemen baru
+        const h1Baru = document.createElement('h1');
+        const teksH1Baru = document.createTextNode('Dan Yang Ini');
+        h1Baru.appendChild(teksH1Baru);
+        // akhir elemen baru
+
+        // variable menambahkan text
+        const sectionText = document.getElementById('text');
+        const h1 = sectionText.getElementsByTagName('h1')[0];
+        // variable mengganti text 
+        const h2 = document.getElementById('ganti');
+        // membuat event pada tombol
+        const btnOk = document.querySelector('.ok');
+        btnOk.addEventListener('click', function () {
+            const img = document.querySelector('.img');
+            let imgLogo = ['1.jpg', '2.jpg', '3.jpg'];
+            hitung++;
+
+            let lenght = imgLogo.lenght;
+            if (hitung < jumlahGambar) {
+                img.src = imgLogo[hitung];
+                h2.innerHTML = 'Illustrasi ini Juga';
+                if (hitung == 1) {
+                    sectionText.removeChild(h1);
+                } else {
+                    sectionText.replaceChild(h1Baru, h2);
+                }
+            } else {
+                alert('KERJAKAN DENGAN SERIUS :');
+                alert('DAN HARUS CEPAT');
+                location.assign("https://wa.me/?text=Siap%20Menjalankan%20Perintah%20Bos");
+            }
+        });
+
+        const btnTidak = document.querySelector('.tidak');
+        btnTidak.addEventListener('mouseover', function () {
+            btnTidak.style.position = "absolute";
+            btnTidak.style.left = `${Math.floor(Math.random() * 90)}%`;
+            btnTidak.style.top = `${Math.floor(Math.random() * 90)}%`;
+        });
+    </script>
+</body>
+
+</html>
